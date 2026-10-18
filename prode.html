@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prode · Camino a la copa</title>
+  <style>
+:root{font-family:Inter,system-ui,sans-serif;color:#f5f7fc;background:#07152f;color-scheme:dark}*{box-sizing:border-box}body{margin:0}header{padding:24px 5%;border-bottom:1px solid #263b61;display:flex;align-items:center;justify-content:space-between}.brand{color:#ffffff;text-decoration:none;font-size:23px;font-weight:850;letter-spacing:2px}.brand span,.tag{font-size:10px;letter-spacing:2px;color:#adbcd3}.brand span{margin-left:18px}main{max-width:1500px;margin:auto;padding:54px 5% 20px}.intro{display:flex;justify-content:space-between;align-items:center;gap:30px}.eyebrow{color:#edbd4b;letter-spacing:3px;font-size:11px;font-weight:750}h1{font-size:clamp(34px,4vw,58px);letter-spacing:-2px;line-height:1.08;margin:18px 0}.description{color:#b4c1d8;line-height:1.8;font-size:15px}.actions{display:flex;flex-direction:column;gap:12px;min-width:220px}.actions p{font-size:11px;color:#a3b4ce;text-align:center}button{font:inherit;cursor:pointer;border-radius:8px}.primary,.secondary{padding:14px 20px;font-weight:700;border:1px solid #3b527c}.primary{background:#edbd4b;color:#071d49;border-color:#edbd4b}.secondary{background:transparent;color:#e2e8f4}button:hover:enabled{filter:brightness(1.15)}button:focus-visible{outline:3px solid #edbd4b;outline-offset:3px}button:disabled{cursor:default;opacity:.45}#mensaje{font-size:13px;color:#b9c7df;min-height:20px;margin:24px 0}.summary{display:flex;justify-content:space-between;border-top:1px solid #2c426a;padding:20px 0;color:#a5b6d2;font-size:10px;letter-spacing:2px}#progreso{color:#edbd4b;letter-spacing:1px}#cuadro{display:grid;grid-template-columns:repeat(4,minmax(210px,1fr));gap:24px;overflow-x:auto;padding:0 4px 20px}.ronda{display:flex;flex-direction:column}.ronda h2{font-size:13px;color:#e2e9f6;letter-spacing:1px;font-weight:600;border-bottom:2px solid #a17e32;padding-bottom:14px}.partidos{display:flex;flex-direction:column;justify-content:space-around;gap:12px;flex:1}.partido{background:#10254b;border:1px solid #30486f;border-radius:9px;padding:4px;box-shadow:0 4px 12px #0002}.partido button{width:100%;display:block;text-align:left;min-height:40px;padding:9px 10px;background:transparent;color:#e5ebf6;border:0;font-size:12px}.partido button+button{border-top:1px solid #2b4269;border-radius:0 0 5px 5px}.partido button[aria-pressed=true]{background:#edbd4b;color:#071d49;font-weight:750;border-radius:5px}.partido button:disabled{color:#b8c5dd}#campeon{display:flex;gap:20px;align-items:center;padding:24px;margin-top:20px;border:1px solid #9d7d38;border-radius:12px;background:linear-gradient(100deg,#283451,#10254b)}#campeon>span{font-size:40px;color:#edbd4b}#campeon p{color:#edcf87;font-size:10px;letter-spacing:3px;margin:0}#campeon h2{margin:8px 0 0;font-size:23px}.completo{border-color:#edbd4b!important}footer{display:flex;justify-content:space-between;gap:20px;color:#a8b9d4;font-size:11px;margin-top:22px;line-height:1.6}@media(max-width:650px){header{padding:20px}.brand span,.tag{display:none}main{padding:30px 20px}.intro{align-items:stretch;flex-direction:column}.actions{min-width:0}.actions p{margin:0}.ronda{min-width:220px}#cuadro{gap:16px}footer{flex-direction:column;gap:0}h1{letter-spacing:-1px}}
+
+/* Identidad visual inspirada en la Liga Profesional de Fútbol. */
+h1,.brand,.ronda h2,#campeon h2{font-family:"Arial Narrow","Roboto Condensed","Liberation Sans Narrow",Impact,sans-serif;font-stretch:condensed}h1{font-weight:900;text-transform:uppercase;letter-spacing:-1px}.brand{color:#edbd4b}.primary{box-shadow:0 4px 18px #edbd4b20}header{border-bottom:3px solid #edbd4b}.ronda h2{text-transform:uppercase;letter-spacing:1.5px}.tag{color:#edbd4b}
+
+.equipo-marcador{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px;font-size:12px;min-height:48px;border-radius:5px}.equipo-marcador+.equipo-marcador{border-top:1px solid #2b4269}.equipo-marcador span{line-height:1.4}.equipo-marcador.ganador{background:#edbd4b;color:#071d49;font-weight:700}.equipo-marcador input{width:48px;flex-shrink:0;padding:6px 2px;border:1px solid #6881a7;border-radius:5px;background:#07152f;color:white;text-align:center;font:inherit;font-size:16px;appearance:textfield}.equipo-marcador input::-webkit-inner-spin-button{appearance:none}.equipo-marcador input:focus-visible{outline:2px solid #edbd4b;outline-offset:2px}.equipo-marcador input:disabled{opacity:.4}.penales{padding:6px;border-top:1px dashed #edbd4b}.penales p{font-size:11px;color:#edcf87;line-height:1.5;margin:4px 0 8px}.penales button{border:1px solid #526c93!important;border-radius:5px!important;margin:4px 0}#confeti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:1000}#confeti i{position:absolute;top:-24px;width:9px;height:15px;animation:caer 3s linear both}@keyframes caer{from{transform:translateY(-20px) rotate(0)}to{transform:translateY(110vh) rotate(var(--giro))}}@media(prefers-reduced-motion:reduce){#confeti{display:none}}
+
+</style>
+  
+</head>
+<body>
+  <header><a class="brand" href="#">⚽ PRODE<span> FÚTBOL ARGENTINO</span></a><span class="tag">TU CUADRO, TU CAMPEÓN</span></header>
+  <main>
+    <section class="intro">
+      <div><p class="eyebrow">DE OCTAVOS A LA GLORIA</p><h1>El camino a la copa<br>lo elegís vos.</h1><p class="description">16 equipos al azar. 15 cruces. Un campeón.<br>Poné los resultados y armá tu pronóstico. Si empatan, decidís por penales.</p></div>
+      <div class="actions"><button id="sortear" class="primary">↻ Sortear equipos</button><button id="limpiar" class="secondary" disabled>Reiniciar pronóstico</button><p>Se guarda automáticamente en este navegador.</p></div>
+    </section>
+    <p id="mensaje" role="status" aria-live="polite"></p>
+    <div class="summary"><span>ELIMINACIÓN DIRECTA</span><span id="progreso">0 de 15 pronósticos</span></div>
+    <section id="cuadro" aria-label="Cuadro del torneo"></section>
+    <section id="campeon" aria-live="polite"><span>★</span><div><p>TU CAMPEÓN</p><h2>La copa espera dueño</h2></div></section>
+    <footer><p>Torneo de fantasía · Sin resultados reales ni puntajes.</p><p>Nómina base: Primera División 2026 · 30 equipos · Selección aleatoria de 16.</p></footer>
+  </main>
+<script>
+const NOMINA = ["Aldosivi", "Argentinos Juniors", "Atlético Tucumán", "Banfield", "Barracas Central", "Belgrano", "Boca Juniors", "Central Córdoba", "Defensa y Justicia", "Deportivo Riestra", "Estudiantes de La Plata", "Estudiantes de Río Cuarto", "Gimnasia de La Plata", "Gimnasia de Mendoza", "Huracán", "Independiente", "Independiente Rivadavia", "Instituto", "Lanús", "Newell’s Old Boys", "Platense", "Racing Club", "River Plate", "Rosario Central", "San Lorenzo", "Sarmiento", "Talleres", "Tigre", "Unión", "Vélez Sarsfield"];
+
+function sorteoLocal() {
+  const equipos = [...NOMINA];
+  for (let i = equipos.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [equipos[i], equipos[j]] = [equipos[j], equipos[i]];
+  }
+  return { ok: true, json: async () => ({ equipos: equipos.slice(0, 16) }) };
+}
+"use strict";
+const CLAVE = "prode-argentino-v1";
+const rondas = ["Octavos de final", "Cuartos de final", "Semifinales", "Final"];
+let estado = { equipos: [], elegidos: [[], [], [], []], resultados: [[], [], [], []] };
+
+function participantes(ronda, partido) {
+  const fuente = ronda === 0 ? estado.equipos : estado.elegidos[ronda - 1];
+  return [fuente[partido * 2], fuente[partido * 2 + 1]];
+}
+
+function normalizar() {
+  for (let ronda = 0; ronda < 4; ronda++) {
+    for (let partido = 0; partido < 8 / (2 ** ronda); partido++) {
+      const equipos = participantes(ronda, partido);
+      const resultado = estado.resultados[ronda][partido];
+      if (resultado) {
+        if (!equipos[0] || !equipos[1] ||
+            JSON.stringify(resultado.equipos) !== JSON.stringify(equipos)) {
+          estado.resultados[ronda][partido] = null;
+          estado.elegidos[ronda][partido] = null;
+        } else {
+          const [a, b] = resultado.goles;
+          const valido = v => typeof v === "string" && /^\d{1,2}$/.test(v);
+          estado.elegidos[ronda][partido] = valido(a) && valido(b)
+            ? (Number(a) === Number(b)
+              ? (equipos.includes(resultado.penales) ? resultado.penales : null)
+              : equipos[Number(a) > Number(b) ? 0 : 1]) : null;
+        }
+      } else if (!equipos[0] || !equipos[1] || !equipos.includes(estado.elegidos[ronda][partido])) {
+        estado.elegidos[ronda][partido] = null;
+      }
+    }
+  }
+}
+
+function actualizar(ronda, partido, resultado) {
+  const anterior = estado.elegidos[3][0];
+  estado.resultados[ronda][partido] = resultado;
+  normalizar(); guardar(); pintar();
+  if (estado.elegidos[3][0] !== anterior) {
+    document.querySelector("#confeti")?.remove();
+    if (estado.elegidos[3][0]) celebrar();
+  }
+}
+
+let temporizadorConfeti;
+function celebrar() {
+  document.querySelector("#confeti")?.remove();
+  clearTimeout(temporizadorConfeti);
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const capa = document.createElement("div");
+  capa.id = "confeti";
+  capa.setAttribute("aria-hidden", "true");
+  for (let i = 0; i < 110; i++) {
+    const papel = document.createElement("i");
+    papel.style.left = `${Math.random() * 100}%`;
+    papel.style.background = ["#edbd4b", "#ffffff", "#5489e6"][i % 3];
+    papel.style.animationDelay = `${Math.random() * .7}s`;
+    papel.style.animationDuration = `${2 + Math.random() * 1.5}s`;
+    papel.style.setProperty("--giro", `${Math.random() * 1080}deg`);
+    capa.append(papel);
+  }
+  document.body.append(capa);
+  temporizadorConfeti = setTimeout(() => capa.remove(), 4500);
+}
+
+function guardar() {
+  try { localStorage.setItem(CLAVE, JSON.stringify(estado)); }
+  catch { document.querySelector("#mensaje").textContent = "No se pudo guardar en este navegador. Podés seguir jugando en esta pestaña."; }
+}
+
+function pintar() {
+  const cuadro = document.querySelector("#cuadro");
+  cuadro.replaceChildren();
+  rondas.forEach((nombre, ronda) => {
+    const columna = document.createElement("section");
+    columna.className = "ronda";
+    const titulo = document.createElement("h2");
+    titulo.textContent = nombre;
+    columna.append(titulo);
+    const partidos = document.createElement("div");
+    partidos.className = "partidos";
+    for (let partido = 0; partido < 8 / (2 ** ronda); partido++) {
+      const tarjeta = document.createElement("div");
+      tarjeta.className = "partido";
+      const equipos = participantes(ronda, partido);
+      const activo = Boolean(equipos[0] && equipos[1]);
+      const resultado = estado.resultados[ronda][partido];
+      const goles = resultado?.goles || ["", ""];
+      equipos.forEach((equipo, lado) => {
+        const fila = document.createElement("label");
+        fila.className = "equipo-marcador";
+        const nombre = document.createElement("span");
+        const elegido = Boolean(equipo && estado.elegidos[ronda][partido] === equipo);
+        fila.classList.toggle("ganador", elegido);
+        nombre.textContent = `${elegido ? "✓ " : ""}${equipo || "Por definir"}`;
+        const input = document.createElement("input");
+        input.type = "number";
+        input.min = "0"; input.max = "99"; input.step = "1";
+        input.inputMode = "numeric";
+        input.placeholder = "–";
+        input.value = goles[lado];
+        input.disabled = !activo;
+        input.setAttribute("aria-label", `Goles de ${equipo || "equipo por definir"}, ${rondas[ronda]}, partido ${partido + 1}`);
+        input.addEventListener("change", () => {
+          if (input.value !== "" && !/^\d{1,2}$/.test(input.value)) {
+            input.setCustomValidity("Ingresá un número entero entre 0 y 99.");
+            input.reportValidity();
+            return;
+          }
+          input.setCustomValidity("");
+          const nuevos = [...goles]; nuevos[lado] = input.value;
+          actualizar(ronda, partido, { equipos: [...equipos], goles: nuevos, penales: null });
+        });
+        input.addEventListener("input", () => input.setCustomValidity(""));
+        fila.append(nombre, input);
+        tarjeta.append(fila);
+      });
+      const empate = activo && goles.every(g => /^\d{1,2}$/.test(g)) && Number(goles[0]) === Number(goles[1]);
+      if (empate) {
+        const penales = document.createElement("div");
+        penales.className = "penales";
+        const texto = document.createElement("p");
+        texto.textContent = "Empate · ¿Quién gana por penales?";
+        penales.append(texto);
+        equipos.forEach(equipo => {
+          const boton = document.createElement("button");
+          boton.textContent = equipo;
+          boton.setAttribute("aria-pressed", String(resultado?.penales === equipo));
+          boton.addEventListener("click", () => actualizar(ronda, partido,
+            { equipos: [...equipos], goles: [...goles], penales: equipo }));
+          penales.append(boton);
+        });
+        tarjeta.append(penales);
+      }
+      partidos.append(tarjeta);
+    }
+    columna.append(partidos);
+    cuadro.append(columna);
+  });
+  const total = estado.elegidos.flat().filter(Boolean).length;
+  document.querySelector("#progreso").textContent = `${total} de 15 pronósticos`;
+  document.querySelector("#campeon h2").textContent = estado.elegidos[3][0] || "La copa espera dueño";
+  document.querySelector("#campeon").classList.toggle("completo", Boolean(estado.elegidos[3][0]));
+  document.querySelector("#limpiar").disabled = !total && !estado.resultados.flat().some(Boolean);
+}
+
+async function sortear(pedirConfirmacion = true) {
+  if (pedirConfirmacion && estado.equipos.length && !confirm("¿Sortear otro torneo? Se perderá el cuadro actual.")) return;
+  const boton = document.querySelector("#sortear");
+  boton.disabled = true;
+  document.querySelector("#mensaje").textContent = "Sorteando equipos…";
+  try {
+    const respuesta = await sorteoLocal();
+    if (!respuesta.ok) throw new Error("sorteo");
+    const datos = await respuesta.json();
+    if (!Array.isArray(datos.equipos) || datos.equipos.length !== 16 ||
+        new Set(datos.equipos).size !== 16 || datos.equipos.some(e => typeof e !== "string" || !e)) throw new Error("equipos");
+    document.querySelector("#confeti")?.remove();
+    estado = { equipos: datos.equipos, elegidos: [[], [], [], []], resultados: [[], [], [], []] };
+    document.querySelector("#mensaje").textContent = "Sorteo listo. Ingresá los goles; si empatan, elegí quién pasa por penales.";
+    guardar(); pintar();
+  } catch {
+    document.querySelector("#mensaje").textContent = "No pudimos sortear los equipos. Volvé a intentar.";
+  } finally { boton.disabled = false; }
+}
+
+document.querySelector("#sortear").addEventListener("click", () => sortear());
+document.querySelector("#limpiar").addEventListener("click", () => {
+  if (!confirm("¿Borrar tus pronósticos y conservar los mismos cruces?")) return;
+  estado.elegidos = [[], [], [], []];
+  estado.resultados = [[], [], [], []];
+  document.querySelector("#confeti")?.remove();
+  guardar(); pintar();
+});
+try {
+  const guardado = JSON.parse(localStorage.getItem(CLAVE));
+  if (guardado && Array.isArray(guardado.equipos) && guardado.equipos.length === 16 &&
+      new Set(guardado.equipos).size === 16 && guardado.equipos.every(e => typeof e === "string" && e) &&
+      Array.isArray(guardado.elegidos) && guardado.elegidos.length === 4 && guardado.elegidos.every(Array.isArray)) {
+    estado = { equipos: guardado.equipos, elegidos: guardado.elegidos.map((r, i) => r.slice(0, 8 / (2 ** i))) };
+    estado.resultados = [0, 1, 2, 3].map(i =>
+      Array.from({ length: 8 / (2 ** i) }, (_, j) => {
+        const r = guardado.resultados?.[i]?.[j];
+        return r && Array.isArray(r.equipos) && r.equipos.length === 2 &&
+          Array.isArray(r.goles) && r.goles.length === 2
+          ? { equipos: r.equipos, goles: r.goles, penales: r.penales } : null;
+      }));
+    normalizar();
+  }
+} catch { /* Un guardado dañado no impide iniciar un torneo nuevo. */ }
+pintar();
+if (!estado.equipos.length) sortear(false);
+
+</script>
+</body>
+</html>

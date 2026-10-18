@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prode · Camino a la copa</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header><a class="brand" href="/">⚽ PRODE<span> FÚTBOL ARGENTINO</span></a><span class="tag">TU CUADRO, TU CAMPEÓN</span></header>
+  <main>
+    <section class="intro">
+      <div><p class="eyebrow">DE OCTAVOS A LA GLORIA</p><h1>El camino a la copa<br>lo elegís vos.</h1><p class="description">16 equipos al azar. 15 cruces. Un campeón.<br>Poné los resultados y armá tu pronóstico. Si empatan, decidís por penales.</p></div>
+      <div class="actions"><button id="sortear" class="primary">↻ Sortear equipos</button><button id="limpiar" class="secondary" disabled>Reiniciar pronóstico</button><p>Se guarda automáticamente en este navegador.</p></div>
+    </section>
+    <p id="mensaje" role="status" aria-live="polite"></p>
+    <div class="summary"><span>ELIMINACIÓN DIRECTA</span><span id="progreso">0 de 15 pronósticos</span></div>
+    <section id="cuadro" aria-label="Cuadro del torneo"></section>
+    <section id="campeon" aria-live="polite"><span>★</span><div><p>TU CAMPEÓN</p><h2>La copa espera dueño</h2></div></section>
+    <footer><p>Torneo de fantasía · Sin resultados reales ni puntajes.</p><p>Nómina base: Primera División 2026 · 30 equipos · Selección aleatoria de 16.</p></footer>
+  </main>
+</body>
+</html>
